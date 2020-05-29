@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addons>
+<addon id="screensaver.weather" name="Weather Screensaver" version="100.5.0" provider-name="drinfernoo">
+    <requires>
+        <import addon="xbmc.python" version="2.14.0"/>
+    </requires>
+
+    <extension point="xbmc.ui.screensaver" library="default.py"/>
+
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Weather Screensaver</summary>
+        <description lang="en">Screensaver that displays the weather.</description>
+        <platform>all</platform>
+        <license>See LICENSE.txt</license>
+        <news>v100.5.0 (2020-02-12)[CR]- Massive cleanup</news>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon>
+
+<addon id="script.extendedinfo" name="OpenInfo-Meta" version="3100.0.1" provider-name="Newf276">
+	<requires>
+		<import addon="xbmc.python" version="2.25.0"/>
+		<import addon="script.module.pil" version="1.1.7"/>
+		<import addon="plugin.video.youtube" version="6.2.2"/>
+		<import addon="script.module.requests" version="2.9.1"/>
+		<import addon="script.skin.helper.service" version="1.0.0"/>
+		<import addon="resource.images.studios.white" version="0.0.18"/>
+	</requires>
+	<extension point="xbmc.python.script" library="script.py"/>
+	<extension point="xbmc.python.pluginsource" library="plugin.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="kodi.context.item">
+		<menu id="kodi.core.main">
+			<item library="context.py">
+				<label>OpenInfo</label>
+				<visible>String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,actor) | String.IsEqual(ListItem.dbtype,director)</visible>
+			</item>
+		</menu>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<reuselanguageinvoker>false</reuselanguageinvoker>
+		<platform>all</platform>
+		<summary>Fork of the ExtendedInfo script/OpenInfo from phil65/vitor07/A4K. Thank you all for the amazing coding work.</summary>
+		<description>This script offers various possibilities to display online content inside skins as well as a complete MovieDB browser including info dialogs for various media types. Needs skin implementation for lot of functions and Script Meta for library and player functions.</description>
+		<assets>
+			<icon>resources/icon.png</icon>
+			<fanart>resources/fanart.jpg</fanart>
+			<screenshot>resources/screenshot1.jpg</screenshot>
+			<screenshot>resources/screenshot2.jpg</screenshot>
+			<screenshot>resources/screenshot3.jpg</screenshot>
+		</assets>
+		<news>3100.0.1 Fixed for Script Meta</news>
+	</extension>
+</addon>
+
+<addon id="plugin.video.penguin" version="3000.0.1" name="Penguin" provider-name="New276">
+
+	<requires>
+		<import addon="xbmc.python" version="2.19.0" />
+		<import addon="script.module.requests" version="2.19.1" />
+		<import addon="script.module.beautifulsoup4" version="4.5.3"/>
+		<import addon="script.module.metahandler" version="2.9.0" />
+		<import addon="plugin.video.youtube" version="6.2.0"/>
+		<import addon="script.module.resolveurl" version="5.0.27"/>
+		<import addon="script.module.openscrapers" />
+		<import addon="script.module.addon.signals" version="0.0.3"/>
+		<import addon="context.penguin" version="1.0.0"/>
+	</requires>
+
+	<extension point="xbmc.python.pluginsource" library="penguin.py">
+		<provides>video</provides>
+	</extension>
+
+	<extension point="xbmc.service" library="service.py" start="startup" />
+	<extension point="xbmc.python.module" library="resources/lib/"/>
+
+	<extension point="xbmc.addon.metadata">
+		<reuselanguageinvoker>false</reuselanguageinvoker> <!-- You can enable this if you want, expect some instability but much faster menu speeds -->
+		<summary lang="en">We do not host any of the contents streamed</summary>
+		<description lang="en">[B][COLOR yellow]penguin[/COLOR][/B][CR] This addon does not form part of the Kodi Media Centre. Please do not seek assistance with this addon from any of the Official Kodi Support Channels.[CR]The author does not host any of the content in this addon and takes no responsibility for content found</description>
+		<platform>all</platform>
+		<license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+		<forum></forum>
+		<website>https://github.com/Newf276/plugin.video.penguin</website>
+		<source>https://github.com/Newf276/plugin.video.penguin</source>
+		<disclaimer lang="en">The author of this addon do not host any of the content which is found and have no affiliation with any of the content providers. This addon simply searches websites for content. Use at your own risk!</disclaimer>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.jpg</fanart>
+			<screenshot>resources/screenshots/screenshot001.jpg</screenshot>
+			<screenshot>resources/screenshots/screenshot002.jpg</screenshot>
+			<screenshot>resources/screenshots/screenshot003.jpg</screenshot>
+		</assets>
+		<news> First edition.</news>
+	</extension>
+</addon>
+
+<addon id="context.penguin" version="1.0.4" name="penguin - Global Context Menu Items" provider-name="Newf276">
+	<requires>
+		<import addon="xbmc.python" version="2.23.0" />
+	</requires>
+	<extension point="kodi.context.item">
+		<menu id="kodi.core.main">
+			<item library="contextSettings.py">
+				<label>[B][COLOR blue]penguin[/COLOR][/B] - CM Settings</label>
+				<visible>
+					String.IsEqual(Window(home).Property(context.penguin.settings),true) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.penguin/) +
+					String.IsEqual(ListItem.Property(ispenguin_widget),true)
+				</visible>
+			</item>
+
+			<item library="traktManager.py">
+				<label>[B][COLOR blue]penguin[/COLOR][/B] - Trakt Manager</label>
+				<visible>
+					String.IsEqual(Window(home).Property(context.penguin.traktManager),true) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.penguin/) +
+					String.IsEqual(ListItem.Property(ispenguin_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+
+			<item library="clearProviders.py">
+				<label>[B][COLOR blue]penguin[/COLOR][/B] - Clear Providers</label>
+				<visible>
+					String.IsEqual(Window(home).Property(context.penguin.clearProviders),true) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.penguin/?action=play) +
+					String.IsEqual(ListItem.Property(ispenguin_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+
+			<item library="clearBookmark.py">
+				<label>[B][COLOR blue]penguin[/COLOR][/B] - Clear Item Bookmark</label>
+				<visible>
+					String.IsEqual(Window(home).Property(context.penguin.clearBookmark),true) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.penguin/?action=play) +
+					String.IsEqual(ListItem.Property(ispenguin_widget),true) +
+<!-- 					!String.IsEqual(ListItem.Property(resumetime),0) + -->
+					!String.IsEqual(ListItem.Property(penguin_resumetime),0) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+
+			<item library="rescrape.py">
+				<label>[B][COLOR blue]penguin[/COLOR][/B] - Rescrape Item</label>
+				<visible>
+					String.IsEqual(Window(home).Property(context.penguin.rescrape),true) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.penguin/?action=play) +
+					String.IsEqual(ListItem.Property(ispenguin_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+
+			<item library="playFromHere.py">
+				<label>[B][COLOR blue]penguin[/COLOR][/B] - Play from here</label>
+				<visible>
+					String.IsEqual(Window(home).Property(context.penguin.playFromHere),true) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.penguin/) +
+					String.IsEqual(ListItem.Property(ispenguin_widget),true) +
+					String.IsEqual(ListItem.dbtype,episode)
+				</visible>
+			</item>
+
+			<item library="autoPlay.py">
+				<label>[B][COLOR blue]penguin[/COLOR][/B] - Auto Play</label>
+				<visible>
+					String.IsEmpty(Window(home).Property(plugin.video.penguin.autoPlay)) +
+					String.IsEqual(Window(home).Property(context.penguin.autoPlay),true) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.penguin/?action=play) +
+					String.IsEqual(ListItem.Property(ispenguin_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+
+			<item library="sourceSelect.py">
+				<label>[B][COLOR blue]penguin[/COLOR][/B] - Source Select</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(plugin.video.penguin.autoPlay)) +
+					String.IsEqual(Window(home).Property(context.penguin.sourceSelect),true) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.penguin/?action=play) +
+					String.IsEqual(ListItem.Property(ispenguin_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+
+			<item library="findSimilar.py">
+				<label>[B][COLOR blue]penguin[/COLOR][/B] - Find Similar</label>
+				<visible>
+					String.IsEqual(Window(home).Property(context.penguin.findSimilar),true) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.penguin/) +
+					String.IsEqual(ListItem.Property(ispenguin_widget),true) +
+					[String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+
+			<item library="browseSeries.py">
+				<label>[B][COLOR blue]penguin[/COLOR][/B] - Browse Series</label>
+				<visible>
+					String.IsEqual(Window(home).Property(context.penguin.browseSeries),true) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.penguin/) +
+					String.IsEqual(ListItem.Property(ispenguin_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow)]
+				</visible>
+			</item>
+
+			<item library="browseEpisodes.py">
+				<label>[B][COLOR blue]penguin[/COLOR][/B] - Browse Episodes</label>
+				<visible>
+					String.IsEqual(Window(home).Property(context.penguin.browseEpisodes),true) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.penguin/) +
+					String.IsEqual(ListItem.Property(ispenguin_widget),true) +
+					String.IsEqual(ListItem.dbtype,episode)
+				</visible>
+			</item> -->
+
+		</menu>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">penguin - This Addon is currently in beta. Please be aware there may be bugs present</summary>
+		<description lang="en">Adds Global Contextual Menu Items for penguin menu items throughout Kodi
+		</description>
+		<platform>all</platform>
+		<license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+		<forum></forum>
+		<website></website>
+		<source></source>
+		<disclaimer lang="en"></disclaimer>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.png</fanart>
+		</assets>
+		<news>
+[B][COLOR red]Update - v1.0.4 - May 8, 2020[/COLOR][/B]
+[COLOR yellow]--[/COLOR][I] Added "Clear Item Bookmark".  This will only show for items
+    with a bookmark and will clear just that item only.[/I]
+		</news>
+	</extension>
+</addon>
+
+<addon id="repository.newf" name="Newf Repository" version="1.0" provider-name="newf276">
+    <extension point="xbmc.addon.repository" name="Newf Repository">
+        <dir>
+            <info compressed="false">https://raw.githubusercontent.com/newf276/newf276.github.io/master/zips/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/newf276/newf276.github.io/master/zips/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/newf276/newf276.github.io/master/zips/</datadir>
+        </dir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Newf Repository</summary>
+        <description>My personal addons</description>
+        <disclaimer>use at your own risk</disclaimer>
+        <platform>all</platform>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon>
+
+<addon id="plugin.audio.iheart"
+       name="iHeartRadio"
+       version="0.0.6"
+       provider-name="divingmule">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.beautifulsoup" version="3.2.1"/>
+    <import addon="script.common.plugin.cache" version="2.5.6"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Live radio over the internet</summary>
+    <description>
+    Listen to more than 1,500 live radio stations from coast-to-coast including pop, country, urban, rock, talk, and college.[CR]
+    Browse radio stations by music genre and location.[CR]
+    Read more: http://news.iheart.com/about/
+    </description>
+    <platform>all</platform>
+    <language>en</language>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+    <source>https://github.com/divingmule/plugin.audio.iheart</source>
+    <forum>http://forum.xbmc.org/showthread.php?tid=170721</forum>
+    <website>http://iheart.com</website>
+    <disclaimer>These Streams will only work from a U.S. IP address.</disclaimer>
+  </extension>
+</addon>
+
+<addon id="repository.newf" name="Newf Repository" version="1.0" provider-name="newf276">
+    <extension point="xbmc.addon.repository" name="Newf Repository">
+        <dir>
+            <info compressed="false">https://raw.githubusercontent.com/newf276/newf276.github.io/master/zips/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/newf276/newf276.github.io/master/zips/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/newf276/newf276.github.io/master/zips/</datadir>
+        </dir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Newf Repository</summary>
+        <description>My personal addons</description>
+        <disclaimer>use at your own risk</disclaimer>
+        <platform>all</platform>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon>
+
+<addon id="script.meta" name="Meta" version="3100.0.1" provider-name="Newf276">
+	<requires>
+		<import addon="xbmc.python" version="2.25.0"/>
+		<import addon="script.module.futures" version="2.2.0"/>
+		<import addon="script.module.requests" version="2.9.1"/>
+		<import addon="script.module.requests-cache" version="0.4.13"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="addon.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="xbmc.service" library="service.py" start="login"/>
+	<extension point="kodi.context.item">
+		<menu id="kodi.core.main">
+			<item library="context.py">
+				<label>Meta</label>
+				<visible>String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,episode)</visible>
+			</item>
+		</menu>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<reuselanguageinvoker>false</reuselanguageinvoker>
+		<platform>all</platform>
+		<summary>Fork of OpenMeta/Meta script from A4K/vitor07. Thank you both for all the greeat work.</summary>
+		<description>This script offers various possibilities to display online content inside skins as well as a complete MovieDB browser including info dialogs for various media types.Player files required, and OpenInfo-Meta for extra information.</description>
+		<assets>
+			<icon>resources/icon.png</icon>
+			<fanart>resources/fanart.jpg</fanart>
+			<screenshot>resources/screenshot000.jpg</screenshot>
+			<screenshot>resources/screenshot001.jpg</screenshot>
+			<screenshot>resources/screenshot002.jpg</screenshot>
+		</assets>
+	</extension>
+</addon>
+</addons>
