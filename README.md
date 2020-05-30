@@ -1,1 +1,1 @@
-My first trial kodi rep
+My first trial kodi rep. These are files for my perosnal use. I take no credit for these addons.  I give credit to all the great developers who have writtent this code.
