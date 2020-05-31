@@ -90,7 +90,7 @@
 		<description>This script offers various possibilities to display online content inside skins as well as a complete MovieDB browser including info dialogs for various media types. Needs skin implementation for lot of functions and Script Meta for library and player functions.</description>
 		<assets>
 			<icon>resources/icon.png</icon>
-			<fanart>resources/fanart.jpg</fanart>
+			<fanart>resources/fanart.png</fanart>
 			<screenshot>resources/screenshot1.jpg</screenshot>
 			<screenshot>resources/screenshot2.jpg</screenshot>
 			<screenshot>resources/screenshot3.jpg</screenshot>
@@ -242,7 +242,7 @@
 	</extension>
 </addon>
 
-<addon id="repository.newf" name="Newf Repository" version="3.0" provider-name="newf276">
+<addon id="repository.newf" name="Newf Repository" version="3.1" provider-name="newf276">
 <extension point="xbmc.addon.repository" name="Newf Repository">
         <dir>
             <info compressed="false">https://raw.githubusercontent.com/newf276/newf276.github.io/master/zips/addons.xml</info>
@@ -277,7 +277,7 @@
         <platform>all</platform>
         <assets>
             <icon>icon.png</icon>
-            <fanart>fanart.jpg</fanart>
+            <fanart>fanart.png</fanart>
         </assets>
     </extension>
 </addon>
@@ -583,20 +583,6 @@ Added Trakt Manager
 	</extension>
 </addon>
 
-<addon id="repository.nixgates" name="Nixgates Repo" version="1.0.0" provider-name="Nixgates">
-	<extension point="xbmc.addon.repository" name="Nixgates Repo">
-		<info compressed="false">https://raw.githubusercontent.com/nixgates/nixgates/master/packages/addons.xml</info>
-		<checksum>https://raw.githubusercontent.com/nixgates/nixgates/master/packages/addons.xml.md5</checksum>
-		<datadir zip="true">https://raw.githubusercontent.com/nixgates/nixgates/master/packages</datadir>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<summary>Nixgates</summary>
-		<description>Nixgates Repository</description>
-		<disclaimer></disclaimer>
-		<platform>all</platform>
-	</extension>
-</addon>
-
 <addon id="plugin.audio.iheart"
        name="iHeartRadio"
        version="0.0.6"
@@ -652,7 +638,7 @@ Added Trakt Manager
 		<description>This script offers various possibilities to display online content inside skins as well as a complete MovieDB browser including info dialogs for various media types.Player files required, and OpenInfo-Meta for extra information.</description>
 		<assets>
 			<icon>resources/icon.png</icon>
-			<fanart>resources/fanart.jpg</fanart>
+			<fanart>resources/fanart.png</fanart>
 			<screenshot>resources/screenshot000.jpg</screenshot>
 			<screenshot>resources/screenshot001.jpg</screenshot>
 			<screenshot>resources/screenshot002.jpg</screenshot>

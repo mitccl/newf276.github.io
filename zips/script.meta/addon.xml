@@ -25,7 +25,7 @@
 		<description>This script offers various possibilities to display online content inside skins as well as a complete MovieDB browser including info dialogs for various media types.Player files required, and OpenInfo-Meta for extra information.</description>
 		<assets>
 			<icon>resources/icon.png</icon>
-			<fanart>resources/fanart.jpg</fanart>
+			<fanart>resources/fanart.png</fanart>
 			<screenshot>resources/screenshot000.jpg</screenshot>
 			<screenshot>resources/screenshot001.jpg</screenshot>
 			<screenshot>resources/screenshot002.jpg</screenshot>
