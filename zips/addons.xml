@@ -242,7 +242,7 @@
 	</extension>
 </addon>
 
-<addon id="repository.newf" name="Newf Repository" version="2.0" provider-name="newf276">
+<addon id="repository.newf" name="Newf Repository" version="3.0" provider-name="newf276">
 <extension point="xbmc.addon.repository" name="Newf Repository">
         <dir>
             <info compressed="false">https://raw.githubusercontent.com/newf276/newf276.github.io/master/zips/addons.xml</info>
@@ -265,11 +265,6 @@
 			<datadir zip="true">https://raw.githubusercontent.com/a4k-openproject/repository.openscrapers/master/zips/</datadir>
 		</dir>
 		<dir>
-			<info compressed="false">https://raw.githubusercontent.com/nixgates/nixgates/master/packages/addons.xml</info>
-			<checksum>https://raw.githubusercontent.com/nixgates/nixgates/master/packages/addons.xml.md5</checksum>
-			<datadir zip="true">https://raw.githubusercontent.com/nixgates/nixgates/master/packages</datadir>
-		</dir>
-		<dir>
 			<info compressed="false">https://raw.githubusercontent.com/Gujal00/smrzips/master/addons.xml</info>
 			<checksum>https://raw.githubusercontent.com/Gujal00/smrzips/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://raw.githubusercontent.com/Gujal00/smrzips/master/zips/</datadir>
@@ -277,8 +272,8 @@
     </extension>
     <extension point="xbmc.addon.metadata">
         <summary>Newf Repository</summary>
-        <description>My personal addons</description>
-        <disclaimer>use at your own risk</disclaimer>
+        <description>My personal addons. Updateed to V3.0</description>
+        <disclaimer>Use at your own risk</disclaimer>
         <platform>all</platform>
         <assets>
             <icon>icon.png</icon>
@@ -585,6 +580,20 @@ Added Browse Show for TV show items
 Removed Torrent File Select - Moved to internal seren Menus only
 Added Trakt Manager
 		</news>
+	</extension>
+</addon>
+
+<addon id="repository.nixgates" name="Nixgates Repo" version="1.0.0" provider-name="Nixgates">
+	<extension point="xbmc.addon.repository" name="Nixgates Repo">
+		<info compressed="false">https://raw.githubusercontent.com/nixgates/nixgates/master/packages/addons.xml</info>
+		<checksum>https://raw.githubusercontent.com/nixgates/nixgates/master/packages/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.githubusercontent.com/nixgates/nixgates/master/packages</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Nixgates</summary>
+		<description>Nixgates Repository</description>
+		<disclaimer></disclaimer>
+		<platform>all</platform>
 	</extension>
 </addon>
 
