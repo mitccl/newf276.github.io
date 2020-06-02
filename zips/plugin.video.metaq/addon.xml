@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.metaq" version="3100.0.1" name="MetaQ" provider-name="Newf276">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0"/>
+		<import addon="script.module.requests" version="2.9.1"/>
+		<import addon="script.module.futures" version="2.2.0"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="default.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="xbmc.service" library="service.py" start="[login|startup]">
+	</extension>
+	<extension point="kodi.context.item">
+		<menu id="kodi.core.main">
+			<menu>
+				<label>MetaQ</label>
+				<item library="context_toggle.py">
+				<label>Preferred toggle</label>
+				<visible>!System.HasAddon(context.metaq) + !Skin.HasSetting(Toggling)</visible>
+				</item>
+				<item library="context_movie.py">
+					<label>$ADDON[plugin.video.metaq 30602]</label>
+					<visible>StringCompare(ListItem.dbtype,movie) + SubString(ListItem.Path, plugin.video.metaq)</visible>
+				</item>
+				<item library="context_tvshow.py">
+					<label>$ADDON[plugin.video.metaq 30602]</label>
+					<visible>StringCompare(ListItem.dbtype,tvshow) + SubString(ListItem.Path, plugin.video.metaq)</visible>
+				</item>
+				<item library="context_playable.py">
+					<label>$ADDON[plugin.video.metaq 30622]</label>
+					<visible>!System.HasAddon(context.metaq) + !Skin.HasSetting(Contexting)</visible>
+				</item>
+			</menu>
+		</menu>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<language></language>
+		<summary lang="en">Trakt, TMDb and TVDB Media Listings</summary>
+		<description lang="en">Browse Trakt, TMDb and TVDB Media Listings and pass info along to library or an addon to try and play it using player files.</description>
+		<supportedcontent>
+			<content>movies</content>
+			<content>tvshows</content>
+			<content>episodes</content>
+		</supportedcontent>
+		<forum></forum>
+		<source>https://github.com/newf276/</source>
+		<email></email>
+		<news>- Remove music and live
+-Initial v 1100.1.1 fork of Metalliq</news>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.jpg</fanart>
+		</assets>
+	</extension>
+</addon>
