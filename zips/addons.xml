@@ -2,7 +2,7 @@
 <addons>
 <addon id="plugin.video.shadow"
 	   name="Shadow"
-	   version="1.8.8"
+	   version="10.9.3"
 	   provider-name="Darkness">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -18,6 +18,36 @@
 	<disclaimer lang="en_US"> Thanks to Nixgates for parts of his code</disclaimer>
     <platform>all</platform>
   </extension>
+</addon>
+
+<addon id="plugin.program.cleaner" name="Kodi Cleaner" version="1.0.1" provider-name="newf276">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0" />
+        <import addon="script.module.requests" />
+        <import addon="script.module.six" />
+    </requires>
+
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>executable</provides>
+    </extension>
+
+    <extension point="xbmc.service" library="startup.py" start="startup" />
+
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Kodi Cleaner</summary>
+        <description lang="en">[Kodi Cleaner offers many maintenance features, selective add-on data saving, and automated build installs.</description>
+        <platform>all</platform>
+        <reuselanguageinvoker>false</reuselanguageinvoker>
+        <source>https://www.github.com/newf276/plugin.program.cleaner/</source>
+        <news>
+1.0.1
+ - Initial Commit
+        </news>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.png</fanart>
+        </assets>
+    </extension>
 </addon>
 
 <addon id="plugin.video.penguin" version="3000.0.1" name="Penguin" provider-name="New276">
@@ -62,11 +92,12 @@
 	</extension>
 </addon>
 
-<addon id="plugin.video.metaq" version="3100.0.1" name="MetaQ" provider-name="Newf276">
+<addon id="plugin.video.metaq" version="1100.1.1" name=" MetaQ" provider-name="Newf276">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0"/>
 		<import addon="script.module.requests" version="2.9.1"/>
 		<import addon="script.module.futures" version="2.2.0"/>
+		<import addon="metadata.tvdb.com" version="3.0.14"/>
 	</requires>
 	<extension point="xbmc.python.pluginsource" library="default.py">
 		<provides>video</provides>
@@ -298,17 +329,12 @@
 	</extension>
 </addon>
 
-<addon id="repository.newf" name="Newf Repository" version="3.4" provider-name="newf276">
+<addon id="repository.newf" name="Newf Repository" version="3.5" provider-name="newf276">
 <extension point="xbmc.addon.repository" name="Newf Repository">
         <dir>
             <info compressed="false">https://raw.githubusercontent.com/newf276/newf276.github.io/master/zips/addons.xml</info>
             <checksum>https://raw.githubusercontent.com/newf276/newf276.github.io/master/zips/addons.xml.md5</checksum>
             <datadir zip="true">https://raw.githubusercontent.com/newf276/newf276.github.io/master/zips/</datadir>
-        </dir>
-        <dir>
-            <info compressed="false">https://raw.githubusercontent.com/Tempest0580/tempest/master/zips/addons.xml</info>
-            <checksum>https://raw.githubusercontent.com/Tempest0580/tempest/master/zips/addons.xml.md5</checksum>
-            <datadir zip="true">https://raw.githubusercontent.com/Tempest0580/tempest/master/zips/</datadir>
         </dir>
 		<dir>
 			<info compressed="false">https://raw.githubusercontent.com/a4k-openproject/repository.openscrapers/master/zips/addons.xml</info>
@@ -323,7 +349,7 @@
     </extension>
     <extension point="xbmc.addon.metadata">
         <summary>Newf Repository</summary>
-        <description>My personal addons. Updateed to V3.3</description>
+        <description>My personal addons. Updateed to V3.5</description>
         <disclaimer>Use at your own risk</disclaimer>
         <platform>all</platform>
         <assets>
@@ -846,5 +872,86 @@ v5.2.14 (2017-01-23)
 	</assets>
     <source>https://github.com/opensubtitles/service.subtitles.opensubtitles_by_opensubtitles</source>
   </extension>
+</addon>
+
+<addon id="plugin.video.finder"
+version="1.0.1"
+name="Finder"
+provider-name="Newf276">
+<requires>
+  <import addon="xbmc.python" version="2.26.0"/>
+  <import addon="script.module.simplecache" version="1.0.11" />
+  <import addon="script.module.requests" version="2.9.1"/>
+  <import addon="script.module.pil" version="1.1.7"/>
+</requires>
+<extension point="xbmc.python.pluginsource" library="plugin.py">
+  <provides>video</provides>
+</extension>
+<extension point="xbmc.service" library="service.py" />
+<extension point="xbmc.python.script" library="script.py" />
+<extension point="kodi.context.item">
+  <menu id="kodi.core.main">
+    <item library="context-play.py">
+      <label>$ADDON[plugin.video.finder 32146]</label>
+      <visible>[String.IsEqual(ListItem.dbtype,episode) + !String.IsEmpty(ListItem.Season) + !String.IsEmpty(ListItem.Episode)] | [String.IsEqual(ListItem.dbtype,movie)]</visible>
+    </item>
+    <item library="context-open.py">
+      <label>$ADDON[plugin.video.finder 32147]</label>
+      <visible>String.IsEqual(ListItem.dbtype,episode) + !String.IsEmpty(ListItem.Property(tvshow.tmdb_id))</visible>
+    </item>
+    <menu>
+      <label>$ADDON[plugin.video.finder 32145]</label>
+      <item library="context-watchlist.py">
+        <label>$ADDON[plugin.video.finder 32148]</label>
+        <visible>!String.IsEmpty(ListItem.Property(Container.Info)) + !String.IsEmpty(Window(Home).Property(Finder.TraktIsAuth)) + !String.IsEmpty(ListItem.Property(tmdb_id)) + [String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,tvshow)]</visible>
+      </item>
+      <item library="context-history.py">
+        <label>$ADDON[plugin.video.finder 32149]</label>
+        <visible>!String.IsEmpty(ListItem.Property(Container.Info)) + !String.IsEmpty(Window(Home).Property(Finder.TraktIsAuth)) + !String.IsEmpty(ListItem.Property(tmdb_id)) + [String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,tvshow)]</visible>
+      </item>
+      <item library="context-collection.py">
+        <label>$ADDON[plugin.video.finder 32150]</label>
+        <visible>!String.IsEmpty(ListItem.Property(Container.Info)) + !String.IsEmpty(Window(Home).Property(Finder.TraktIsAuth)) + !String.IsEmpty(ListItem.Property(tmdb_id)) + [String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,tvshow)]</visible>
+      </item>
+      <item library="context-library.py">
+        <label>$ADDON[plugin.video.finder 32151]</label>
+        <visible>!String.IsEmpty(ListItem.Property(Container.Info)) + !String.IsEmpty(ListItem.Property(tmdb_id)) + [String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,season)]</visible>
+      </item>
+      <item library="context-library-userlist.py">
+        <label>$ADDON[plugin.video.finder 32151]</label>
+        <visible>!String.IsEmpty(ListItem.Property(Container.Info)) + String.IsEqual(ListItem.Property(Item.Info),trakt_userlist)</visible>
+      </item>
+      <item library="context-addtouserlist.py">
+        <label>$ADDON[plugin.video.finder 32140]</label>
+        <visible>!String.IsEmpty(Window(Home).Property(Finder.TraktIsAuth)) + [String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,tvshow)] + [!String.IsEmpty(ListItem.Property(tmdb_id)) | !String.IsEmpty(ListItem.DBID)]</visible>
+      </item>
+      <item library="context-removefromuserlist.py">
+        <label>$ADDON[plugin.video.finder 32152]</label>
+        <visible>!String.IsEmpty(Window(Home).Property(Finder.TraktIsAuth)) + !String.IsEmpty(Window(Home).Property(Finder.TraktUserSlug)) + !String.IsEmpty(ListItem.Property(Container.User_Slug)) + !String.IsEmpty(ListItem.Property(Container.List_Slug)) + String.IsEqual(Window(Home).Property(Finder.TraktUserSlug),ListItem.Property(Container.User_Slug))</visible>
+      </item>
+      <item library="context-refresh-item.py">
+        <label>$ADDON[plugin.video.finder 32153]</label>
+        <visible>!String.IsEmpty(ListItem.Property(Container.Info)) + !String.IsEmpty(ListItem.Property(tmdb_id)) + [String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,tvshow)]</visible>
+      </item>
+    </menu>
+  </menu>
+</extension>
+<extension point="xbmc.addon.metadata">
+  <summary lang="en_GB">Finder - Now With Trakt Support!</summary>
+  <summary lang="es_ES">Finder - ¡Ahora con soporte para Trakt!</summary>
+  <description lang="en_GB">finder provides details about movies, tvshows and actors from TMDb. Users can access a variety of lists from TMDb and Trakt.</description>
+  <description lang="es_ES">Finder proporciona detalles sobre películas, programas de televisión y actores de TMDb. Los usuarios pueden acceder a una variedad de listas desde TMDb y Trakt.</description>
+  <disclaimer lang="en_GB">Provided by Finder and Trakt.</disclaimer>
+  <disclaimer lang="es_ES">Proporcionado por finder y Trakt</disclaimer>
+  <license>GPL-3.0-or-later</license>
+  <website>https://github.com/newf276/plugin.video.finder</website>
+  <assets>
+    <icon>icon.png</icon>
+    <fanart>fanart.jpg</fanart>
+    <screenshot>resources/screenshot-01.jpg</screenshot>
+    <screenshot>resources/screenshot-02.jpg</screenshot>
+  </assets>
+  <news>1.0.1 - First attempt</news>
+</extension>
 </addon>
 </addons>

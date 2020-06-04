@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.metaq" version="3100.0.1" name="MetaQ" provider-name="Newf276">
+<addon id="plugin.video.metaq" version="1100.1.1" name=" MetaQ" provider-name="Newf276">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0"/>
 		<import addon="script.module.requests" version="2.9.1"/>
 		<import addon="script.module.futures" version="2.2.0"/>
+		<import addon="metadata.tvdb.com" version="3.0.14"/>
 	</requires>
 	<extension point="xbmc.python.pluginsource" library="default.py">
 		<provides>video</provides>
