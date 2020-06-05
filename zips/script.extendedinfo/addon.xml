@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.extendedinfo" name="OpenInfo-Meta" version="3100.0.1" provider-name="Newf276">
+<addon id="script.extendedinfo" name="Openinfo" version="200.0.1" provider-name="Newf276">
 	<requires>
 		<import addon="xbmc.python" version="2.25.0"/>
 		<import addon="script.module.pil" version="1.1.7"/>
@@ -27,11 +27,11 @@
 		<description>This script offers various possibilities to display online content inside skins as well as a complete MovieDB browser including info dialogs for various media types. Needs skin implementation for lot of functions and Script Meta for library and player functions.</description>
 		<assets>
 			<icon>resources/icon.png</icon>
-			<fanart>resources/fanart.png</fanart>
+			<fanart>resources/fanart.jpg</fanart>
 			<screenshot>resources/screenshot1.jpg</screenshot>
 			<screenshot>resources/screenshot2.jpg</screenshot>
 			<screenshot>resources/screenshot3.jpg</screenshot>
 		</assets>
-		<news>3100.0.1 Fixed for Script Meta</news>
+		<news>200.0.1 Customized for Discover Addon</news>
 	</extension>
 </addon>
