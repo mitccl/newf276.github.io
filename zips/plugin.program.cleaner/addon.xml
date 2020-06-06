@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.program.cleaner" name="Kodi Cleaner" version="1.0.2" provider-name="newf276">
+<addon id="plugin.program.cleaner" name="Kodi Cleaner" version="1.0.3" provider-name="newf276">
     <requires>
         <import addon="xbmc.python" version="2.1.0" />
         <import addon="script.module.requests" />
@@ -14,7 +14,7 @@
     
     <extension point="xbmc.addon.metadata">
         <summary lang="en">Kodi Cleaner</summary>
-        <description lang="en">[Kodi Cleaner offers many maintenance features, selective add-on data saving, and automated build installs.</description>
+        <description lang="en">Kodi Cleaner offers many maintenance features, selective add-on data saving, and automated build installs.</description>
         <platform>all</platform>
         <reuselanguageinvoker>false</reuselanguageinvoker>
         <source>https://www.github.com/newf276/plugin.program.cleaner/</source>

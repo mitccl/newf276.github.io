@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addons>
+<addon id="plugin.video.youtube" name="YouTube" version="60.8.2" provider-name="Newf276, anxdpanic, bromix">
+    <requires>
+        <import addon="xbmc.python" version="2.20.0"/>
+        <import addon="script.module.six" version="1.11.0"/>
+        <import addon="script.module.requests" version="2.12.4"/>
+        <import addon="script.module.inputstreamhelper" version="0.2.2" optional="true"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="resources/lib/default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.service" library="resources/lib/startup.py" start="login"/>
+    <extension point="xbmc.python.module" library="resources/lib/"/>
+    <extension point="xbmc.addon.metadata">
+        <news>updated icon and fanart</news>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+        <forum>https://ytaddon.page.link/forum</forum>
+        <website>https://www.youtube.com</website>
+        <email>ytplugin at datanet dot ws</email>
+        <source>https://github.com/jdf76/plugin.video.youtube</source>
+        <reuselanguageinvoker>true</reuselanguageinvoker>
+    </extension>
+</addon>
+
 <addon id="plugin.video.shadow"
 	   name="Shadow"
 	   version="10.9.5"
@@ -20,7 +46,7 @@
   </extension>
 </addon>
 
-<addon id="plugin.program.cleaner" name="Kodi Cleaner" version="1.0.2" provider-name="newf276">
+<addon id="plugin.program.cleaner" name="Kodi Cleaner" version="1.0.3" provider-name="newf276">
     <requires>
         <import addon="xbmc.python" version="2.1.0" />
         <import addon="script.module.requests" />
@@ -35,7 +61,7 @@
 
     <extension point="xbmc.addon.metadata">
         <summary lang="en">Kodi Cleaner</summary>
-        <description lang="en">[Kodi Cleaner offers many maintenance features, selective add-on data saving, and automated build installs.</description>
+        <description lang="en">Kodi Cleaner offers many maintenance features, selective add-on data saving, and automated build installs.</description>
         <platform>all</platform>
         <reuselanguageinvoker>false</reuselanguageinvoker>
         <source>https://www.github.com/newf276/plugin.program.cleaner/</source>
@@ -364,7 +390,7 @@
 	</extension>
 </addon>
 
-<addon id="repository.newf" name="Newf Repository" version="3.8" provider-name="newf276">
+<addon id="repository.newf" name="Newf Repository" version="3.9" provider-name="newf276">
 <extension point="xbmc.addon.repository" name="Newf Repository">
         <dir>
             <info compressed="false">https://raw.githubusercontent.com/newf276/newf276.github.io/master/zips/addons.xml</info>
@@ -389,7 +415,7 @@
     </extension>
     <extension point="xbmc.addon.metadata">
         <summary>Newf Repository</summary>
-        <description>My personal addons. Updateed to V3.8</description>
+        <description>My personal addons. Updateed to V3.9</description>
         <disclaimer>Use at your own risk</disclaimer>
         <platform>all</platform>
         <assets>
@@ -784,10 +810,10 @@ Added Trakt Manager
 
 <addon id="plugin.audio.iheart"
        name="iHeartRadio"
-       version="0.0.6"
-       provider-name="divingmule">
+       version="0.0.7"
+       provider-name="Newf276">
   <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="xbmc.python" version="2.2.0"/>
     <import addon="script.module.beautifulsoup" version="3.2.1"/>
     <import addon="script.common.plugin.cache" version="2.5.6"/>
   </requires>
@@ -796,18 +822,14 @@ Added Trakt Manager
   </extension>
   <extension point="xbmc.addon.metadata">
     <summary>Live radio over the internet</summary>
-    <description>
-    Listen to more than 1,500 live radio stations from coast-to-coast including pop, country, urban, rock, talk, and college.[CR]
-    Browse radio stations by music genre and location.[CR]
-    Read more: http://news.iheart.com/about/
-    </description>
+    <description>Listen to more than 1,500 live USA radio stations</description>
     <platform>all</platform>
     <language>en</language>
     <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
     <source>https://github.com/divingmule/plugin.audio.iheart</source>
     <forum>http://forum.xbmc.org/showthread.php?tid=170721</forum>
     <website>http://iheart.com</website>
-    <disclaimer>These Streams will only work from a U.S. IP address.</disclaimer>
+    <disclaimer>Some countries are georestricted</disclaimer>
   </extension>
 </addon>
 
