@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.lucy.artwork" version="1.0.4" name="Lucy Artwork" provider-name="Newf276">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0"/>
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<summary>Lucy Artwork</summary>
+		<description></description>
+		<platform>all</platform>
+	</extension>
+</addon>
